@@ -1,0 +1,114 @@
+/* 重置默认样式 */
+body {
+    margin: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #daf0d3;
+    color: #333;
+}
+
+/* 头部样式 */
+header {
+    background-color: #2e7d32; /* 深绿色，象征健康 */
+    color: rgb(235, 228, 228);
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* 导航样式 */
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #4caf50; /* 浅绿色悬停效果 */
+    border-radius: 5px;
+}
+
+/* 主要内容样式 */
+main {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+main h2 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+main p {
+    color: #555;
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 5px;
+    background-color: #2e7d32;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* 首页横幅样式 */
+main::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #4caf50;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+main video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 添加平滑过渡 */
+}
+
+nav a:hover {
+    background-color: #4caf50;
+    border-radius: 5px;
+    color: white;
+}
+为标题添加淡入动画  
+header h1, main h2 {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
