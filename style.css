@@ -161,3 +161,54 @@ video {
     background-color: #4caf50;
     border-radius: 5px;
 }
+/* 留言表单样式 */
+#comment-form {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#comment-input {
+    padding: 8px;
+    width: 60%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#comment-form button {
+    padding: 8px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#comment-form button:hover {
+    background-color: #388e3c;
+}
+
+/* 弹幕容器和动画 */
+#barrage-container {
+    position: relative;
+    height: 200px; /* 弹幕区域高度 */
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.barrage {
+    position: absolute;
+    right: -300px; /* 从右侧外开始 */
+    color: #2e7d32;
+    font-size: 1.2em;
+    white-space: nowrap;
+    animation: moveLeft linear infinite;
+}
+
+@keyframes moveLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100vw); } /* 移出屏幕左侧 */
+}
+
