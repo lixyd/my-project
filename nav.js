@@ -6,14 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
             highlightCurrentPage();
         })
         .catch(error => console.error('加载导航失败:', error));
-});
 
-function highlightCurrentPage() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const links = document.querySelectorAll('.main-nav a, .sub-nav a');
-    links.forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-            link.classList.add('active');
-        }
-    });
-}
+    function highlightCurrentPage() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const links = document.querySelectorAll('.main-nav a, .sub-nav a');
+        links.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    }
+});

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="引阳养生 - 冬季养生小贴士，学习中医冬季养生技巧">
-    <meta name="keywords" content="引阳养生, 冬季养生, 中医五行, 肾精保养">
+    <meta name="description" content="引阳养生 - 中医养生智慧，探索四季养生与健康生活">
+    <meta name="keywords" content="引阳养生, 中医养生, 四季养生, 经络针灸, 健康生活">
     <title>引阳养生 - 首页</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,20 +15,44 @@
     </header>
     <main>
         <h2>引阳养生 - 健康生活的起点</h2>
-        <ul class="article-list"></ul>
-        <p>欢迎体验中医养生的智慧！我们提供四季养生、饮食调理等实用建议，助您拥有健康身体。</p>
-        <video controls width="100%" preload="auto">
+        <p>欢迎体验中医养生的智慧！我们致力于分享四季养生、经络调理、饮食建议等实用知识，助您开启健康生活方式。</p>
+        <video controls width="100%" preload="auto" poster="thumbnail.jpg">
             <source src="video.mp4" type="video/mp4">
             您的浏览器不支持视频播放。
         </video>
-       
-        <p>探索中医核心知识：经络、针灸与穴位。</p>
-        <p>关注中医养生，了解更多健康生活小贴士。引阳养生致力于分享四季养生、饮食调理等实用建议，助您开启健康生活方式。 <a href="yangsheng.html" class="btn">了解更多</a></p>
+        <section>
+            <h3>最新养生文章</h3>
+            <ul class="article-list">
+                <!-- 动态加载文章 -->
+            </ul>
+        </section>
+        <section>
+            <h3>探索中医核心</h3>
+            <p>了解经络、针灸与穴位的奥秘，掌握中医养生的精髓。</p>
+            <p>关注引阳养生，获取更多健康生活小贴士。 <a href="yangsheng.html" class="btn">了解更多</a></p>
+        </section>
     </main>
     <footer>
         <p>© 2025 引阳养生 版权所有</p>
     </footer>
     <script src="article.js"></script>
     <script src="nav.js"></script>
+    <script>
+        // 动态加载文章列表
+        document.addEventListener('DOMContentLoaded', function() {
+            const articles = [
+                { title: '春季与中医养生', link: 'spring.html', date: '2025-03-08' },
+                { title: '夏季与中医养生', link: 'summer.html', date: '2025-03-09' },
+                { title: '冬季与中医养生', link: 'winter.html', date: '2025-03-11' },
+                { title: '伤寒论与桂枝汤', link: 'shanghanlun.html', date: '2025-03-12' }
+            ];
+            const articleList = document.querySelector('.article-list');
+            articles.forEach(article => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${article.link}">${article.title}</a> <span>${article.date}</span>`;
+                articleList.appendChild(li);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="引阳养生 - 伤寒论与桂枝汤，探索中医经典">
+    <meta name="keywords" content="引阳养生, 伤寒论, 桂枝汤, 中医辨证">
     <title>引阳养生 - 伤寒论</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>欢迎来到引阳养生</h1>
-        <nav>
-            <a href="index.html">首页</a>
-            <a href="about.html">关于我</a>
-            <a href="yangsheng.html">养生内容</a>
-            <a href="contact.html">联系方式</a>
-            
-        </nav>
+        <div id="nav-container"></div> <!-- 统一导航插入点 -->
     </header>
     <main>
         <h2>伤寒论</h2>
@@ -28,18 +23,24 @@
         <section>
             <h3>桂枝汤 - 解表和营经典</h3>
             <p>《伤寒论》曰：“太阳病，项背强几几，汗出恶风者，桂枝汤主之。”桂枝汤是治疗太阳中风证的代表方剂，具有解肌发表、调和营卫之效。适用于感冒初起，症见发热、汗出、恶风、脉浮缓等。</p>
-            <h4>方剂组成：</h4>
-            <ul>
-                <li>桂枝 9g - 温通经脉，解表散寒</li>
-                <li>芍药 9g - 养血敛营，和营卫</li>
-                <li>生姜 9g - 发汗解表，温中散寒</li>
-                <li>大枣 12g（4枚） - 益气和中，调脾胃</li>
-                <li>甘草 6g（炙） - 调和诸药，益气补中</li>
-            </ul>
-            <h4>用法与功效：</h4>
-            <p>水煎服，先煮桂枝、生姜，后下余药，温服一碗，取微汗为佳。桂枝汤通过发汗解表，调和营卫，治疗外感风寒表虚证。若汗出过多，可减桂枝加附子，灵活变通。</p>
-            <h4>养生应用：</h4>
-            <p>现代生活中，感冒初期若有汗出恶风，可参考桂枝汤原理，用生姜红糖水加少许肉桂煮饮，助发汗退热。但须注意体质，若无汗恶寒，则不宜用此方。</p>
+            <section>
+                <h4>方剂组成</h4>
+                <ul>
+                    <li>桂枝 9g - 温通经脉，解表散寒</li>
+                    <li>芍药 9g - 养血敛营，和营卫</li>
+                    <li>生姜 9g - 发汗解表，温中散寒</li>
+                    <li>大枣 12g（4枚） - 益气和中，调脾胃</li>
+                    <li>甘草 6g（炙） - 调和诸药，益气补中</li>
+                </ul>
+            </section>
+            <section>
+                <h4>用法与功效</h4>
+                <p>水煎服，先煮桂枝、生姜，后下余药，温服一碗，取微汗为佳。桂枝汤通过发汗解表，调和营卫，治疗外感风寒表虚证。若汗出过多，可减桂枝加附子，灵活变通。</p>
+            </section>
+            <section>
+                <h4>养生应用</h4>
+                <p>现代生活中，感冒初期若有汗出恶风，可参考桂枝汤原理，用生姜红糖水加少许肉桂煮饮，助发汗退热。但须注意体质，若无汗恶寒，则不宜用此方。</p>
+            </section>
         </section>
         <div id="article-info">
             <p>发布时间: <span id="publish-time"></span></p>
@@ -50,5 +51,6 @@
         <p>© 2025 引阳养生 版权所有</p>
     </footer>
     <script src="article.js"></script>
+    <script src="nav.js"></script>
 </body>
 </html>
