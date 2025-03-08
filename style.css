@@ -260,3 +260,33 @@ main a[href^="https://qm.qq.com"]:hover {
     background-color: #e8f5e9; /* 浅绿背景 */
     color: #388e3c;
 }
+.article-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.article-list a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.article-list a:hover {
+    color: #4caf50;
+    text-decoration: underline;
+}
+
+.article-list span {
+    color: #666;
+    font-size: 0.9em;
+}
