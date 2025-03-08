@@ -22,25 +22,34 @@ function createComment(text) {
     const container = document.getElementById('comment-container');
     const commentBlock = document.createElement('div');
     commentBlock.className = 'comment-block';
-    
-    const textSpan = document.createElement('span');
-    textSpan.innerText = text;
-    commentBlock.appendChild(textSpan);
+    commentBlock.innerText = text;
 
-    // 添加删除按钮
-    const deleteBtn = document.createElement('button');
-    deleteBtn.innerText = '删除';
-    deleteBtn.className = 'delete-btn';
-    deleteBtn.onclick = function() {
-        const password = prompt('请输入管理员密码：');
-        if (password === 'leey123') { // 设置你的密码
-            container.removeChild(commentBlock);
-            removeComment(text);
-        } else {
-            alert('密码错误，无权限删除！');
-        }
-    };
-    commentBlock.appendChild(deleteBtn);
+    // 长按事件
+    let pressTimer;
+    commentBlock.addEventListener('mousedown', startPress);
+    commentBlock.addEventListener('touchstart', startPress); // 支持移动端触摸
+    commentBlock.addEventListener('mouseup', clearPress);
+    commentBlock.addEventListener('touchend', clearPress);
+    commentBlock.addEventListener('mouseleave', clearPress);
+    commentBlock.addEventListener('touchcancel', clearPress);
+
+    function startPress(e) {
+        e.preventDefault();
+        pressTimer = setTimeout(() => {
+            const password = prompt('请输入管理员密码以删除此留言：');
+            if (password === 'leey123') { // 你的密码
+                container.removeChild(commentBlock);
+                removeComment(text);
+                alert('留言已删除');
+            } else {
+                alert('密码错误，无权限删除！');
+            }
+        }, 1000); // 长按1秒触发
+    }
+
+    function clearPress() {
+        clearTimeout(pressTimer);
+    }
 
     // 随机颜色
     const colors = [
