@@ -1,3 +1,3 @@
-# my-project
-This is my first update
-
+# My Project
+## Description
+This is my project repository
