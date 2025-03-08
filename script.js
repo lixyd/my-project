@@ -1,29 +1,68 @@
+// 页面加载时显示已有留言
+window.onload = function() {
+    const savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+    savedComments.forEach(comment => createComment(comment));
+};
+
+// 监听表单提交
 document.getElementById('comment-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // 阻止表单默认提交
+    event.preventDefault();
     const input = document.getElementById('comment-input');
-    const comment = input.value.trim();
+    let comment = input.value.trim();
     if (comment) {
-        createBarrage(comment); // 创建弹幕
-        input.value = ''; // 清空输入框
+        comment = comment.substring(0, 8);
+        createComment(comment);
+        saveComment(comment);
+        input.value = '';
     }
 });
 
-function createBarrage(text) {
-    const container = document.getElementById('barrage-container');
-    const barrage = document.createElement('span');
-    barrage.className = 'barrage';
-    barrage.innerText = text;
+// 创建留言模块
+function createComment(text) {
+    const container = document.getElementById('comment-container');
+    const commentBlock = document.createElement('div');
+    commentBlock.className = 'comment-block';
+    
+    const textSpan = document.createElement('span');
+    textSpan.innerText = text;
+    commentBlock.appendChild(textSpan);
 
-    // 随机位置和速度
-    const top = Math.random() * 80 + 10; // 10%到90%的高度
-    const duration = Math.random() * 5 + 5; // 5到10秒动画
-    barrage.style.top = `${top}%`;
-    barrage.style.animationDuration = `${duration}s`;
+    // 添加删除按钮
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerText = '删除';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.onclick = function() {
+        const password = prompt('请输入管理员密码：');
+        if (password === 'leey123') { // 设置你的密码
+            container.removeChild(commentBlock);
+            removeComment(text);
+        } else {
+            alert('密码错误，无权限删除！');
+        }
+    };
+    commentBlock.appendChild(deleteBtn);
 
-    container.appendChild(barrage);
+    // 随机颜色
+    const colors = [
+        '#e8f5e9', '#f1f8e9', '#f9fbe7', '#fffde7', '#fff3e0',
+        '#dcedc8', '#c8e6c9', '#b2dfdb'
+    ];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    commentBlock.style.backgroundColor = randomColor;
 
-    // 删除过期的弹幕
-    setTimeout(() => {
-        barrage.remove();
-    }, duration * 1000);
+    container.appendChild(commentBlock);
+}
+
+// 保存留言到 localStorage
+function saveComment(text) {
+    const savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+    savedComments.push(text);
+    localStorage.setItem('comments', JSON.stringify(savedComments));
+}
+
+// 从 localStorage 删除留言
+function removeComment(text) {
+    let savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+    savedComments = savedComments.filter(comment => comment !== text);
+    localStorage.setItem('comments', JSON.stringify(savedComments));
 }
