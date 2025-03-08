@@ -11,15 +11,14 @@
 <body>
     <header>
         <h1>欢迎来到引阳养生</h1>
+        <button id="menu-toggle" class="menu-toggle">☰</button>
         <div id="nav-container"></div> <!-- 统一导航插入点 -->
     </header>
     <main>
-        <h2>引阳养生 - 健康生活的起点</h2>
-        <p>欢迎体验中医养生的智慧！我们致力于分享四季养生、经络调理、饮食建议等实用知识，助您开启健康生活方式。</p>
-        <video controls width="100%" preload="auto" poster="thumbnail.jpg">
-            <source src="video.mp4" type="video/mp4">
-            您的浏览器不支持视频播放。
-        </video>
+        <section>
+            <h2>引阳养生 - 健康生活的起点</h2>
+            <p>欢迎体验中医养生的智慧！我们致力于分享四季养生、经络调理、饮食建议等实用知识，助您开启健康生活方式。</p>
+        </section>
         <section>
             <h3>最新养生文章</h3>
             <ul class="article-list">
@@ -35,15 +34,30 @@
     <footer>
         <p>© 2025 引阳养生 版权所有</p>
     </footer>
-    <script src="article.js"></script>
     <script src="nav.js"></script>
     <script>
-        // 动态加载文章列表
+        // 移动端导航切换
         document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navContainer = document.getElementById('nav-container');
+
+            menuToggle.addEventListener('click', function() {
+                navContainer.classList.toggle('active');
+                this.textContent = navContainer.classList.contains('active') ? '✖' : '☰';
+            });
+
+            // 关闭导航时点击外部
+            document.addEventListener('click', function(e) {
+                if (!navContainer.contains(e.target) && e.target !== menuToggle) {
+                    navContainer.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+
+            // 动态加载文章列表
             const articles = [
                 { title: '春季与中医养生', link: 'spring.html', date: '2025-03-08' },
-                { title: '夏季与中医养生', link: 'summer.html', date: '2025-03-09' },
-                { title: '冬季与中医养生', link: 'winter.html', date: '2025-03-11' },
+                { title: '秋季与中医养生', link: 'autumn.html', date: '2025-03-09' },
                 { title: '伤寒论与桂枝汤', link: 'shanghanlun.html', date: '2025-03-12' }
             ];
             const articleList = document.querySelector('.article-list');
