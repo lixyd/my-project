@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 确保 DOM 加载完成
+    const navContainer = document.getElementById('nav-container');
+    const menuToggle = document.getElementById('menu-toggle');
+
+    if (!navContainer || !menuToggle) {
+        console.error('导航容器或菜单按钮未找到！');
+        return;
+    }
+
     // 动态添加遮罩
     const overlay = document.createElement('div');
     overlay.id = 'overlay';
@@ -7,22 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 加载导航
     fetch('nav.html')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error('无法加载 nav.html，状态码: ' + response.status);
+            return response.text();
+        })
         .then(data => {
-            document.getElementById('nav-container').innerHTML = data;
+            navContainer.innerHTML = data;
             highlightCurrentPage();
 
             // 导航切换
-            const menuToggle = document.getElementById('menu-toggle');
             menuToggle.addEventListener('click', function() {
-                const isActive = document.getElementById('nav-container').classList.toggle('active');
+                const isActive = navContainer.classList.toggle('active');
                 overlay.classList.toggle('active', isActive);
                 this.textContent = isActive ? '✖' : '☰';
             });
 
-            // 点击遮罩关闭
+            // 点击遮罩或外部关闭
             document.addEventListener('click', function(e) {
-                const navContainer = document.getElementById('nav-container');
                 if (!navContainer.contains(e.target) && e.target !== menuToggle && !overlay.contains(e.target)) {
                     navContainer.classList.remove('active');
                     overlay.classList.remove('active');
@@ -36,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const links = document.querySelectorAll('.main-nav a, .sub-nav a');
         links.forEach(link => {
-            if (link.getAttribute('href') === currentPage) link.classList.add('active');
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
         });
     }
 });

@@ -18,10 +18,13 @@
         <section>
             <h2>引阳养生 - 健康生活的起点</h2>
             <p>欢迎体验中医养生的智慧！我们致力于分享四季养生、经络调理、饮食建议等实用知识，助您开启健康生活方式。</p>
-            <video controls width="100%" preload="auto">
-                <source src="video.mp4" type="video/mp4">
-                您的浏览器不支持视频播放。
-            </video>
+            <div class="video-container">
+                <video id="main-video" width="100%" preload="auto">
+                    <source src="video.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+                <button id="play-btn" class="play-btn">播放</button>
+            </div>
         </section>
         <section>
             <h3>最新养生文章</h3>
@@ -40,25 +43,8 @@
     </footer>
     <script src="nav.js"></script>
     <script>
-        // 移动端导航切换
+        // 仅保留文章动态加载
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const navContainer = document.getElementById('nav-container');
-
-            menuToggle.addEventListener('click', function() {
-                navContainer.classList.toggle('active');
-                this.textContent = navContainer.classList.contains('active') ? '✖' : '☰';
-            });
-
-            // 关闭导航时点击外部
-            document.addEventListener('click', function(e) {
-                if (!navContainer.contains(e.target) && e.target !== menuToggle) {
-                    navContainer.classList.remove('active');
-                    menuToggle.textContent = '☰';
-                }
-            });
-
-            // 动态加载文章列表
             const articles = [
                 { title: '春季与中医养生', link: 'spring.html', date: '2025-03-08' },
                 { title: '秋季与中医养生', link: 'autumn.html', date: '2025-03-09' },
@@ -69,6 +55,19 @@
                 const li = document.createElement('li');
                 li.innerHTML = `<a href="${article.link}">${article.title}</a> <span>${article.date}</span>`;
                 articleList.appendChild(li);
+            });
+
+            // 视频播放控制
+            const video = document.getElementById('main-video');
+            const playBtn = document.getElementById('play-btn');
+            playBtn.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    this.textContent = '暂停';
+                } else {
+                    video.pause();
+                    this.textContent = '播放';
+                }
             });
         });
     </script>
