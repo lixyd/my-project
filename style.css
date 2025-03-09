@@ -396,3 +396,15 @@ footer {
         margin: 0 10px;
     }
 }
+/* 保留原有样式，仅添加遮罩 */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+#overlay.active { display: block; }
