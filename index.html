@@ -38,27 +38,22 @@
     <footer>
         <p>© 2025 引阳养生 版权所有</p>
     </footer>
-    <div id="overlay" class="overlay"></div> <!-- 添加透明背景遮罩 -->
     <script src="nav.js"></script>
-    <script src="script.js"></script>
     <script>
         // 移动端导航切换
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menu-toggle');
             const navContainer = document.getElementById('nav-container');
-            const overlay = document.getElementById('overlay');
 
             menuToggle.addEventListener('click', function() {
-                const isActive = navContainer.classList.toggle('active');
-                overlay.classList.toggle('active', isActive);
-                this.textContent = isActive ? '✖' : '☰';
+                navContainer.classList.toggle('active');
+                this.textContent = navContainer.classList.contains('active') ? '✖' : '☰';
             });
 
-            // 关闭导航时点击外部或遮罩
+            // 关闭导航时点击外部
             document.addEventListener('click', function(e) {
-                if (!navContainer.contains(e.target) && e.target !== menuToggle && !overlay.contains(e.target)) {
+                if (!navContainer.contains(e.target) && e.target !== menuToggle) {
                     navContainer.classList.remove('active');
-                    overlay.classList.remove('active');
                     menuToggle.textContent = '☰';
                 }
             });
