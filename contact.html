@@ -35,80 +35,24 @@
             </form>
             <div id="comment-container"></div>
         </section>
+        <div class="comment-section" style="margin: 20px auto; max-width: 600px;"> <!-- 调整位置 -->
+            <h3>留言</h3>
+            <form class="comment-form">
+                <input type="text" class="comment-input" placeholder="输入你的留言（最多50字）" maxlength="50" required>
+                <button type="submit">提交</button>
+            </form>
+            <ul class="comment-list"></ul>
+        </div>
     </main>
     <footer>
         <p>© 2025 引阳养生 版权所有</p>
+        <a href="index.html" class="return-home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2L3 12h3v8h6v-6h2v6h6v-8h3z"></path>
+            </svg>
+        </a>
     </footer>
     <script src="nav.js"></script>
-    <script>
-        // 联系表单（模拟提交）
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contact-form');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name-input').value;
-                const email = document.getElementById('email-input').value;
-                const message = document.getElementById('message-input').value;
-                alert(`感谢您的留言！\n姓名: ${name}\n邮箱: ${email}\n留言: ${message}`);
-                contactForm.reset();
-            });
-
-            // 留言板功能
-            const commentForm = document.getElementById('comment-form');
-            const commentInput = document.getElementById('comment-input');
-            const commentContainer = document.getElementById('comment-container');
-            let comments = JSON.parse(localStorage.getItem('comments')) || [];
-
-            // 加载已有留言
-            comments.forEach(comment => addComment(comment.text, comment.date, comment.id));
-            updateCommentCount();
-
-            // 提交留言
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const text = commentInput.value.trim();
-                if (text) {
-                    const date = new Date().toLocaleString('zh-CN');
-                    const id = Date.now(); // 唯一ID
-                    addComment(text, date, id);
-                    saveComment(text, date, id);
-                    commentInput.value = '';
-                }
-            });
-
-            // 添加留言到页面
-            function addComment(text, date, id) {
-                const div = document.createElement('div');
-                div.classList.add('comment');
-                div.dataset.id = id;
-                div.innerHTML = `
-                    <p>${text} <span class="comment-date">${date}</span>
-                    <button class="delete-btn">删除</button></p>
-                `;
-                commentContainer.insertBefore(div, commentContainer.firstChild);
-
-                // 删除功能
-                div.querySelector('.delete-btn').addEventListener('click', function() {
-                    div.remove();
-                    comments = comments.filter(c => c.id !== id);
-                    localStorage.setItem('comments', JSON.stringify(comments));
-                    updateCommentCount();
-                });
-            }
-
-            // 保存留言到本地存储
-            function saveComment(text, date, id) {
-                comments.unshift({ text, date, id });
-                localStorage.setItem('comments', JSON.stringify(comments.slice(0, 10))); // 限制10条
-                updateCommentCount();
-            }
-
-            // 更新留言计数
-            function updateCommentCount() {
-                const count = comments.length;
-                document.querySelector('h3:nth-child(2)').textContent = `留言板 (${count}/10)`;
-            }
-        });
-    </script>
+    <script src="article.js"></script> <!-- 添加引用 -->
 </body>
 </html>

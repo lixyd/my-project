@@ -56,7 +56,7 @@ header h1 {
     border-radius: 4px;
 }
 
-.main-nav, .sub-nav {
+.main-nav {
     display: flex;
     gap: 10px;
     list-style: none;
@@ -64,8 +64,8 @@ header h1 {
     padding: 0;
 }
 
-.main-nav a, .sub-nav a {
-    color: #fff;
+.main-nav a {
+    color: #2e7d32; /* 修改为养生主题的绿色 */
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 4px;
@@ -73,12 +73,55 @@ header h1 {
     font-weight: bold;
 }
 
+/* 新增中医文化导航 */
+.main-nav a[href="#chinese-culture"] {
+    color: #2e7d32;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+    background-color: #e8f5e9; /* 浅绿色背景 */
+    color: #4caf50; /* 更亮的绿色 */
+}
+
+.main-nav a.active {
+    background-color: #388e3c; /* 深绿色背景 */
+    color: #fff; /* 白色文字 */
+}
+
+.sub-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    list-style: none;
+}
+
+.sub-nav a {
+    color: #2e7d32; /* 修改为养生主题的绿色 */
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: #388e3c;
+    transition: background-color 0.3s ease;
+}
+
 .main-nav a:hover, .sub-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #e8f5e9; /* 浅绿色背景，突出养生主题 */
+    color: #4caf50; /* 更亮的绿色 */
+}
+
+.sub-nav a:hover {
+    background-color: #2e7d32;
 }
 
 .main-nav a.active, .sub-nav a.active {
-    background-color: #388e3c;
+    background-color: #388e3c; /* 深绿色背景 */
+    color: #fff; /* 白色文字 */
 }
 
 /* 透明背景遮罩 */
@@ -106,30 +149,33 @@ main {
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     animation: slideUp 0.8s ease-out;
+    font-size: 16px; /* 调整为适中的字体大小 */
+    line-height: 1.8; /* 增加行间距 */
 }
 
 main h2 {
     color: #2e7d32;
-    font-size: 1.8em;
+    font-size: 1.6em; /* 调整标题大小 */
     margin-bottom: 20px;
     animation: fadeIn 1s ease-in;
 }
 
 main h3 {
     color: #2e7d32;
-    font-size: 1.4em;
+    font-size: 1.3em; /* 调整副标题大小 */
     margin: 20px 0 10px;
 }
 
 main h4 {
     color: #4caf50;
-    font-size: 1.2em;
+    font-size: 1.1em; /* 调整小标题大小 */
     margin-bottom: 10px;
 }
 
 main p {
     color: #555;
     line-height: 1.8;
+    font-size: 0.95em; /* 调整段落文字大小 */
 }
 
 /* 视频样式 */
@@ -226,6 +272,11 @@ main p {
 .article-list span {
     color: #666;
     font-size: 0.9em;
+}
+
+/* 鼠标选中时的浅绿色背景提醒 */
+.seasonal-article:hover, .article-list li:hover {
+    background-color: #e6ffe6; /* 浅绿色背景 */
 }
 
 /* 联系表单样式 */
@@ -348,6 +399,91 @@ footer {
     bottom: 0;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 返回首页浮窗样式 */
+.return-home {
+    position: fixed;
+    bottom: 80px; /* 调整位置，避免被导航栏遮挡 */
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #4caf50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.return-home:hover {
+    transform: scale(1.1);
+    background-color: #388e3c;
+}
+
+.return-home svg {
+    fill: white;
+    width: 30px;
+    height: 30px;
+}
+
+/* 留言与点赞样式 */
+.comment-section {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.comment-section h3 {
+    font-size: 1.2em;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-list li {
+    display: inline-block; /* 改为内联块，适应文字长度 */
+    padding: 10px;
+    margin: 10px; /* 增加间距，避免靠近边框 */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-size: 1em;
+    animation: fadeIn 0.5s ease-in;
+    word-break: break-word; /* 防止文字超出边界 */
+}
+
+.comment-list .comment-text {
+    display: inline-block; /* 适应文字长度 */
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f9f9f9; /* 默认背景色 */
+    transition: background-color 0.3s ease;
+}
+
+.comment-list .like-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-list .like-btn:hover {
+    background-color: #388e3c;
+}
+
+.comment-list .like-btn.liked {
+    background-color: #ff5722;
 }
 
 /* 动画 */

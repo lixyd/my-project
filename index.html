@@ -32,30 +32,72 @@
                 <!-- 动态加载文章 -->
             </ul>
         </section>
+       
+        
         <section>
-            <h3>探索中医核心</h3>
-            <p>了解经络、针灸与穴位的奥秘，掌握中医养生的精髓。</p>
-            <p>关注引阳养生，获取更多健康生活小贴士。 <a href="yangsheng.html" class="btn">了解更多</a></p>
+            <h3>四季养生内容</h3>
+            <div id="seasonal-content">
+                <!-- 动态加载四季养生内容 -->
+            </div>
         </section>
+        <div class="comment-section" style="margin: 20px auto; max-width: 600px;"> <!-- 调整位置 -->
+            <h3>留言</h3>
+            <form class="comment-form">
+                <input type="text" class="comment-input" placeholder="输入你的留言（最多50字）" maxlength="50" required>
+                <button type="submit">提交</button>
+            </form>
+            <ul class="comment-list"></ul>
+        </div>
     </main>
     <footer>
         <p>© 2025 引阳养生 版权所有</p>
+        <a href="index.html" class="return-home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2L3 12h3v8h6v-6h2v6h6v-8h3z"></path>
+            </svg>
+        </a>
     </footer>
     <script src="nav.js"></script>
     <script>
-        // 仅保留文章动态加载
         document.addEventListener('DOMContentLoaded', function() {
             const articles = [
-                { title: '春季与中医养生', link: 'spring.html', date: '2025-03-08' },
-                { title: '秋季与中医养生', link: 'autumn.html', date: '2025-03-09' },
-                { title: '伤寒论与桂枝汤', link: 'shanghanlun.html', date: '2025-03-12' }
+                { title: '春季与中医养生', link: 'spring.html', date: '2025-03-08', views: 120 },
+                { title: '夏季与中医养生', link: 'summer.html', date: '2025-03-09', views: 95 },
+                { title: '秋季与中医养生', link: 'autumn.html', date: '2025-03-10', views: 110 },
+                { title: '冬季与中医养生', link: 'winter.html', date: '2025-03-11', views: 130 },
+                { title: '伤寒论与桂枝汤', link: 'shanghanlun.html', date: '2025-03-12', views: 80 },
+                { title: '黄帝内经与五行健康', link: 'huangdineijing.html', date: '2025-03-13', views: 150 },
+                { title: '经络与气血运行', link: 'jingluo.html', date: '2025-03-14', views: 90 }
             ];
+
             const articleList = document.querySelector('.article-list');
-            articles.forEach(article => {
+            const seasonalContent = document.getElementById('seasonal-content');
+
+            articles.forEach((article, index) => {
                 const li = document.createElement('li');
                 li.innerHTML = `<a href="${article.link}">${article.title}</a> <span>${article.date}</span>`;
-                articleList.appendChild(li);
+                if (index < 3) {
+                    articleList.appendChild(li); // 显示前三篇文章
+                } else {
+                    li.style.display = 'none'; // 隐藏其余文章
+                    articleList.appendChild(li);
+                }
+
             });
+
+            // 隐藏多余的四季养生内容
+            const seasonalArticles = document.querySelectorAll('.seasonal-article');
+            seasonalArticles.forEach((article, index) => {
+                if (index >= 3) {
+                    article.style.display = 'none';
+                }
+            });
+
+            // 隐藏四季养生内容的标题
+            const seasonalContentTitle = document.querySelector('#seasonal-content').previousElementSibling;
+            if (seasonalContentTitle && seasonalContentTitle.tagName === 'H3') {
+                seasonalContentTitle.style.display = 'none';
+            }
 
             // 视频播放控制
             const video = document.getElementById('main-video');

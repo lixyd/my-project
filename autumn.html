@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="引阳养生 - 秋季养生小贴士，学习中医秋季养生技巧">
-    <meta name="keywords" content="引阳养生, 秋季养生, 中医五行, 润燥养肺">
-    <title>引阳养生 - 秋季养生</title>
+    <meta name="description" content="秋季与中医养生 - 学习秋季健康生活技巧">
+    <title>秋季与中医养生</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,34 +15,24 @@
     </header>
     <main>
         <h2>秋季与中医养生</h2>
-        <h4>中医认为：秋季属金，主润肺</h4>
+        <h4>中医认为：秋季属金，主收敛</h4>
         <section>
-            <h3>秋季养生的核心</h3>
-            <p>秋季由热转寒，五行属金，对应肺脏，主气管和呼吸系统。气候干燥，易耗伤津液，导致口干舌燥、皮肤干裂、咳嗽等“燥邪”症状。养生关键在于润燥养肺，顺应自然变化。</p>
+            <h3>秋季养生小贴士</h3>
+            <p>秋季是收获的季节，也是调养身体的重要时节。以下是一些秋季养生的建议：</p>
+            <ul>
+                <li>多吃润燥的食物，如梨、银耳、百合。</li>
+                <li>注意保暖，避免受凉。</li>
+                <li>适当进行户外运动，增强体质。</li>
+            </ul>
         </section>
         <section>
-            <h3>饮食调养</h3>
-            <p>宜多食甘润生津食物，如银耳、百合、梨、蜂蜜、莲藕，滋阴润燥，防秋燥伤肺。避免辛辣、油炸燥热之品，适量食红枣、山药、杏仁，增强免疫力。</p>
-        </section>
-        <section>
-            <h3>作息调整</h3>
-            <p>提倡“早卧早起”，顺应“阳气收敛，阴气生长”规律，保持充足睡眠，适应气温下降。昼夜温差大，适时添衣，避免受凉感冒。</p>
-        </section>
-        <section>
-            <h3>运动建议</h3>
-            <p>适宜温和锻炼，如散步、瑜伽、太极拳，增强肺功能，促进气血流通。避免过度出汗，以防损伤津液，加重秋燥。</p>
-        </section>
-        <section>
-            <h3>情志调节</h3>
-            <p>“肺主悲”，秋季易情绪波动，宜保持心情平和，避免悲伤忧郁。听音乐、书法绘画、冥想可调节情绪，身心和谐。</p>
-        </section>
-        <section>
-            <h3>秋季进补</h3>
-            <p>“春夏养阳，秋冬养阴”，适量食桂圆、枸杞、黑芝麻，调养身体，为冬季打基础。进补因人而异，避免过度导致上火。</p>
-        </section>
-        <section>
-            <h3>总结</h3>
-            <p>秋季养生顺应自然，重视润燥养肺、合理膳食、调节情绪，适度锻炼和防寒保暖，平稳度过秋冬交替。</p>
+            <h3>推荐食谱</h3>
+            <p>以下是一些适合秋季的养生食谱：</p>
+            <ul>
+                <li>银耳莲子羹</li>
+                <li>百合南瓜粥</li>
+                <li>雪梨炖冰糖</li>
+            </ul>
         </section>
         <div id="article-info">
             <p>发布时间: <span id="publish-time"></span></p>
@@ -53,6 +42,21 @@
     <footer>
         <p>© 2025 引阳养生 版权所有</p>
     </footer>
-       <script src="nav.js"></script>
+    <a href="index.html" class="return-home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+            <circle cx="12" cy="12" r="12" fill="#4caf50"></circle>
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="white"></path>
+        </svg>
+    </a>
+    <div class="comment-section">
+        <h3>留言</h3>
+        <form class="comment-form">
+            <input type="text" class="comment-input" placeholder="输入你的留言（最多50字）" maxlength="50" required>
+            <button type="submit">提交</button>
+        </form>
+        <ul class="comment-list"></ul>
+    </div>
+    <script src="nav.js"></script>
+    <script src="article.js"></script> <!-- 添加引用 -->
 </body>
 </html>
