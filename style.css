@@ -28,7 +28,8 @@ header {
 header h1 {
     font-size: 2.2em;
     margin: 0;
-    animation: fadeIn 1s ease-in;
+    animation: fadeIn 1s ease-in, colorChange 3s infinite alternate;
+    color: #2e7d32; /* 更改为舒适的绿色 */
 }
 
 /* 导航切换按钮 */
@@ -253,7 +254,7 @@ main p {
 }
 
 .article-list li:hover {
-    background-color: #e8f5e9;
+    background-color: #d0f0c0; /* 柔和的浅绿色背景 */
     transform: translateY(-2px);
 }
 
@@ -276,7 +277,7 @@ main p {
 
 /* 鼠标选中时的浅绿色背景提醒 */
 .seasonal-article:hover, .article-list li:hover {
-    background-color: #e6ffe6; /* 浅绿色背景 */
+    background-color: #d0f0c0; /* 柔和的浅绿色背景 */
 }
 
 /* 联系表单样式 */
@@ -495,6 +496,15 @@ footer {
 @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #4dd451; /* 更改为亮绿色 */
+    }
+    100% {
+        color: #417a48; /* 更改为深绿色 */
+    }
 }
 
 /* 响应式调整 */
